@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="save_values"
+        android:defaultValue="true"
+        android:title="@string/prefs_save"
+        android:summary="@string/prefs_save_description"
+
+        />
+    <Preference
+        android:title="@string/author"
+        android:key="author_info" />
+</PreferenceScreen>

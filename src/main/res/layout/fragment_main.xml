@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.brightgestures.autoamplifier.MainFragment_">
+
+    <TextView
+        android:id="@+id/auto_volume_control_label"
+        android:text="@string/auto_volume_control_label"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/separator_margin" />
+
+    <View
+        android:id="@+id/separator1"
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginBottom="@dimen/separator_margin"
+        android:layout_below="@id/auto_volume_control_label"
+        android:layout_width="match_parent"
+        android:background="#2da587"
+        android:layout_height="2dp" />
+
+    <RelativeLayout
+        android:id="@+id/automatic_volume_control_box"
+        android:layout_below="@id/separator1"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Switch
+            android:id="@+id/enable_switch"
+            android:text="@string/auto_volume_control_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:thumb="@drawable/autoamplifiertheme_switch_inner_holo_light"
+            android:track="@drawable/autoamplifiertheme_switch_track_holo_light"
+            />
+
+        <TextView
+            android:id="@+id/current_volume_label"
+            android:text="Current volume"
+            android:layout_below="@id/enable_switch"
+            style="@android:style/TextAppearance.DeviceDefault.Widget.Button"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ProgressBar
+            android:id="@+id/current_volume_progress"
+            android:layout_below="@id/enable_switch"
+            android:layout_toRightOf="@id/current_volume_label"
+            style="?android:progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</RelativeLayout>

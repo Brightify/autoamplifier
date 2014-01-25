@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AutoAmplifierTheme" parent="@style/_AutoAmplifierTheme" />
+
+    <style name="_AutoAmplifierTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarAutoAmplifierTheme</item>
+
+        <item name="android:seekBarStyle">@style/SeekBarAutoAmplifierTheme</item>
+
+        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+        <item name="android:listSeparatorTextViewStyle">@style/HeadingTheme</item>
+
+    </style>
+
+    <style name="ActionBarTheme" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_background</item>
+    </style>
+
+    <style name="HeadingTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#2da587</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+</resources>
