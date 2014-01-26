@@ -1,4 +1,4 @@
-package com.brightgestures.autoamplifier;
+package com.brightgestures.autoamplifier.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import org.androidannotations.annotations.RootContext;
 
 /**
  * Created by matous on 11/30/13.
+ * Class that makes communication between components easier
  */
 @EBean
 public class DataSender {

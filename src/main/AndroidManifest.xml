@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:screenOrientation="portrait"
-            android:name=".SettingsActivity"
+            android:name=".settings.SettingsActivity"
             android:label="@string/settings_label" />
 
         <service

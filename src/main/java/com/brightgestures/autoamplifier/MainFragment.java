@@ -7,11 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
-import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
+
+import com.brightgestures.autoamplifier.settings.SettingsActivity;
+import com.brightgestures.autoamplifier.util.DataSender;
+import com.brightgestures.autoamplifier.util.PreferenceProvider;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -26,6 +29,7 @@ import org.androidannotations.annotations.ViewById;
 
 /**
  * Created by matous on 25.1.14.
+ * Main application fragment
  */
 
 @EFragment(R.layout.fragment_main)
@@ -54,6 +58,8 @@ public class MainFragment extends Fragment {
     ActivityManager activityManager;
     @Bean
     DataSender dataSender;
+    @Bean
+    PreferenceProvider preferenceProvider;
     private boolean volumeThreadRunning = true;
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -64,9 +70,14 @@ public class MainFragment extends Fragment {
 
     @AfterViews
     void initialise() {
+        preferenceProvider.init();
         currentVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         quietVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        quietVolume.setProgress(preferenceProvider.getVolumeLow());
         noisyVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        noisyVolume.setProgress(preferenceProvider.getVolumeHigh());
+        quietMic.setProgress(preferenceProvider.getMicLow());
+        noisyMic.setProgress(preferenceProvider.getMicHigh());
         enable.setChecked(true);
     }
 
@@ -98,7 +109,7 @@ public class MainFragment extends Fragment {
     void quietMicChange(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
             dataSender.sendLowMic(progress);
-            Log.e("low", "mic");
+            saveValues();
         }
     }
 
@@ -106,6 +117,7 @@ public class MainFragment extends Fragment {
     void quietVolumeChange(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
             dataSender.sendLowVolume(progress);
+            saveValues();
         }
     }
 
@@ -113,6 +125,7 @@ public class MainFragment extends Fragment {
     void noisyMicChange(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
             dataSender.sendHighMic(progress);
+            saveValues();
         }
     }
 
@@ -120,6 +133,7 @@ public class MainFragment extends Fragment {
     void noisyVolumeChange(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
             dataSender.sendHighVolume(progress);
+            saveValues();
         }
     }
 
@@ -162,5 +176,10 @@ public class MainFragment extends Fragment {
             }
         }
         return false;
+    }
+
+    private void saveValues() {
+        preferenceProvider.saveValues(quietVolume.getProgress(), noisyVolume.getProgress(),
+                quietMic.getProgress(), noisyMic.getProgress());
     }
 }

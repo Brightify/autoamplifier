@@ -4,6 +4,9 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaRecorder;
 
+import com.brightgestures.autoamplifier.util.DataSender;
+import com.brightgestures.autoamplifier.util.PreferenceProvider;
+
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
@@ -13,6 +16,7 @@ import java.io.IOException;
 
 /**
  * Created by matous on 11/27/13.
+ * Class that changes volume
  */
 @EBean
 public class Amplifier {
@@ -34,8 +38,10 @@ public class Amplifier {
     @Bean
     DataSender dataSender;
 
+    @Bean
+    PreferenceProvider preferenceProvider;
+
     private MediaRecorder mediaRecorder;
-    private PreferenceProvider preferenceProvider;
 
     //amplifier settings variables
     private int volumeLow;
@@ -53,9 +59,9 @@ public class Amplifier {
     }
 
     public void init() throws IOException {
+        preferenceProvider.init();
         currentVolume = audioManager.getStreamVolume(MUSIC_STREAM);
         lastVolume = audioManager.getStreamVolume(MUSIC_STREAM);
-        preferenceProvider = new PreferenceProvider(context);
         micLow = preferenceProvider.getMicLow();
         micHigh = preferenceProvider.getMicHigh();
         volumeLow = preferenceProvider.getVolumeLow();

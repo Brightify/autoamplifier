@@ -8,8 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
+
+import com.brightgestures.autoamplifier.util.DataSender;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EService;
