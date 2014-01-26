@@ -3,12 +3,16 @@ package com.brightgestures.autoamplifier;
 import android.content.Context;
 import android.content.Intent;
 
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.RootContext;
+
 /**
  * Created by matous on 11/30/13.
  */
+@EBean
 public class DataSender {
-    private static final String INTENT_TO_SERVICE = "toService";
-    private static final String INTENT_TO_ACTIVITY = "toActivity";
+    public static final String INTENT_TO_SERVICE = "toService";
+    public static final String INTENT_TO_ACTIVITY = "toActivity";
     public final static String VOLUME_LOW = "volumeLow";
     public final static String VOLUME_HIGH = "volumeHigh";
     public final static String MIC_LOW = "micLow";
@@ -17,12 +21,12 @@ public class DataSender {
     public final static String RESET = "reset";
     public final static String VALUE = "value";
 
-    private Context context;
+    @RootContext
+    Context context;
     private Intent toService;
     private Intent toActivity;
 
-    public DataSender(Context context) {
-        this.context = context;
+    public DataSender() {
         toService = new Intent(INTENT_TO_SERVICE);
         toActivity = new Intent(INTENT_TO_ACTIVITY);
     }

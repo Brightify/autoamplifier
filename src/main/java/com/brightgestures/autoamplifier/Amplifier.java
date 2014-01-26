@@ -4,7 +4,9 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaRecorder;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.SystemService;
 
 import java.io.IOException;
@@ -26,8 +28,13 @@ public class Amplifier {
     @SystemService
     AudioManager audioManager;
 
+    @RootContext
+    Context context;
+
+    @Bean
+    DataSender dataSender;
+
     private MediaRecorder mediaRecorder;
-    private DataSender dataSender;
     private PreferenceProvider preferenceProvider;
 
     //amplifier settings variables
@@ -41,18 +48,18 @@ public class Amplifier {
     private int[] micArray = new int[MIC_ARRAY_LENGTH];
     private boolean UIChangePerformed = false;
 
-    public Amplifier(Context context)  {
+    public Amplifier() {
+
+    }
+
+    public void init() throws IOException {
         currentVolume = audioManager.getStreamVolume(MUSIC_STREAM);
         lastVolume = audioManager.getStreamVolume(MUSIC_STREAM);
         preferenceProvider = new PreferenceProvider(context);
-        dataSender = new DataSender(context);
-        micLow=preferenceProvider.getMicLow();
-        micHigh=preferenceProvider.getMicHigh();
+        micLow = preferenceProvider.getMicLow();
+        micHigh = preferenceProvider.getMicHigh();
         volumeLow = preferenceProvider.getVolumeLow();
         volumeHigh = preferenceProvider.getVolumeHigh();
-    }
-
-    public void init() throws IOException{
         initialiseMediaRecorder();
         initialiseMicArray();
     }

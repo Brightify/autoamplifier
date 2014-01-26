@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.Bean;
@@ -60,11 +61,11 @@ public class AmplifierService extends Service {
         if (getApplicationContext() != null) {
             try {
                 amplifier.init();
+                amplifier.initialiseMicArray();
             } catch (IOException e) {
                 Toast.makeText(getApplicationContext(), "Couldn't start service", Toast.LENGTH_LONG)
                         .show();
             }
-            amplifier.initialiseMicArray();
         }
     }
 
