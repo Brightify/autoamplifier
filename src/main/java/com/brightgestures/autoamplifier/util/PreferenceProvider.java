@@ -33,7 +33,7 @@ public class PreferenceProvider {
 
     }
 
-    public void init(){
+    public void init() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
@@ -87,5 +87,10 @@ public class PreferenceProvider {
 
     public void setMicHigh(int micHigh) {
         saveInteger(micHigh, MIC_HIGH);
+    }
+
+    public void resetPreferences() {
+        saveValues(Amplifier.VOLUME_DEFAULT_MIN, Amplifier.VOLUME_DEFAULT_MAX,
+                Amplifier.MIC_DEFAULT_MIN, Amplifier.MIC_DEFAULT_MAX);
     }
 }

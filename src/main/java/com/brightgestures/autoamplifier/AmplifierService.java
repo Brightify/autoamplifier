@@ -90,7 +90,7 @@ public class AmplifierService extends Service {
         notification.setLatestEventInfo(getApplicationContext(),
                 getString(R.string.app_name), getString(R.string.notification_title),
                 PendingIntent.getActivity(this, 0, new Intent(this,
-                        MainActivity.class)
+                        MainActivity_.class)
                         .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0));
         startForeground(NOTIFICATION_ID, notification);
         return START_NOT_STICKY;

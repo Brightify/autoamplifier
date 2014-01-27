@@ -17,5 +17,6 @@
     <string name="mic_label">Microphone</string>
     <string name="noisy_environment_label">Noisy environment</string>
     <string name="service_label">AmplifierService</string>
+    <string name="reset">Reset</string>
 
 </resources>

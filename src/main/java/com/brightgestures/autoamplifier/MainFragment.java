@@ -93,6 +93,16 @@ public class MainFragment extends Fragment {
         }
     }
 
+    @OptionsItem(R.id.action_reset)
+    void reset() {
+        dataSender.sendReset();
+        preferenceProvider.resetPreferences();
+        quietMic.setProgress(Amplifier.MIC_DEFAULT_MIN);
+        noisyMic.setProgress(Amplifier.MIC_DEFAULT_MAX);
+        quietVolume.setProgress(Amplifier.VOLUME_DEFAULT_MIN);
+        noisyVolume.setProgress(Amplifier.VOLUME_DEFAULT_MAX);
+    }
+
     @CheckedChange(R.id.enable_switch)
     void serviceEnabled(CompoundButton button) {
         if (button.isChecked()) {
