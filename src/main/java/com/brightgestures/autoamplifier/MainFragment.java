@@ -184,6 +184,14 @@ public class MainFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(!isServiceRunning()){
+            enable.setChecked(false);
+        }
+    }
+
     private boolean isServiceRunning() {
         if (activityManager != null && activityManager.getRunningServices(Integer.MAX_VALUE) != null) {
             for (ActivityManager.RunningServiceInfo serviceInfo :
