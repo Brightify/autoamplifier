@@ -2,10 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     tools:context="com.brightgestures.autoamplifier.MainFragment_">
 
     <TextView
@@ -13,8 +11,8 @@
         style="?android:attr/listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:paddingLeft="@dimen/separator_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/auto_volume_control_label" />
 
     <View
@@ -22,8 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/auto_volume_control_label"
-        android:layout_marginBottom="@dimen/separator_margin"
-        android:layout_marginTop="@dimen/separator_margin"
         android:background="@color/autoamplifiertheme_color" />
 
     <RelativeLayout
@@ -31,80 +27,82 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/separator1"
-        android:layout_marginBottom="@dimen/activity_vertical_double_margin"
-        android:layout_marginLeft="@dimen/eight_dp_margin"
-        android:layout_marginRight="@dimen/eight_dp_margin">
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
 
-        <TextView
-            android:id="@+id/switch_label"
-            android:text="@string/auto_volume_control_label"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/enable_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="14dp"
+            android:gravity="center_vertical">
 
-        <Switch
-            android:id="@+id/enable_switch"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/switch_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/auto_volume_control_label"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/enable_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:thumb="@drawable/autoamplifiertheme_switch_inner_holo_light"
+                android:track="@drawable/autoamplifiertheme_switch_track_holo_light" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/current_volume_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:thumb="@drawable/autoamplifiertheme_switch_inner_holo_light"
-            android:track="@drawable/autoamplifiertheme_switch_track_holo_light"/>
+            android:layout_below="@id/enable_group"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
 
+            <TextView
+                android:id="@+id/current_volume_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/current_volume_label"
+                android:textSize="14sp" />
 
-        <View
-            android:id="@+id/horizontal_separator"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_below="@id/enable_switch"
-            android:layout_centerHorizontal="true" />
+            <ProgressBar
+                android:id="@+id/current_volume_progress"
+                style="@style/ProgressBarAutoAmplifierTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/current_volume_label"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/current_mic_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/enable_switch"
-            android:layout_marginBottom="4dp"
-            android:layout_toLeftOf="@id/horizontal_separator"
-            android:text="@string/current_volume_label" />
+            android:layout_below="@id/current_volume_group"
+            android:layout_marginTop="16dp">
 
-        <ProgressBar
-            android:id="@+id/current_volume_progress"
-            style="@style/ProgressBarAutoAmplifierTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/enable_switch"
-            android:layout_marginTop="4dp"
-            android:layout_toRightOf="@id/horizontal_separator" />
+            <TextView
+                android:id="@+id/current_mic_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/current_mic_label"
+                android:textSize="14sp" />
 
-
-        <View
-            android:id="@+id/horizontal_separator2"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_below="@id/current_volume_label"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:id="@+id/current_mic_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/current_volume_label"
-            android:layout_toLeftOf="@id/horizontal_separator2"
-            android:text="@string/current_mic_label" />
-
-        <ProgressBar
-            android:id="@+id/current_mic_progress"
-            style="@style/ProgressBarAutoAmplifierTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/current_volume_label"
-            android:layout_marginTop="4dp"
-            android:max="32767"
-            android:layout_toRightOf="@id/horizontal_separator2" />
+            <ProgressBar
+                android:id="@+id/current_mic_progress"
+                style="@style/ProgressBarAutoAmplifierTheme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="32767" />
+        </LinearLayout>
     </RelativeLayout>
 
     <TextView
@@ -113,6 +111,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/automatic_volume_control_box"
+        android:layout_marginTop="32dp"
         android:paddingLeft="@dimen/eight_dp_margin"
         android:text="@string/settings_label" />
 
@@ -121,8 +120,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/settings_label"
-        android:layout_marginBottom="@dimen/separator_margin"
-        android:layout_marginTop="@dimen/separator_margin"
         android:background="@color/autoamplifiertheme_color" />
 
     <RelativeLayout
@@ -130,87 +127,80 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/separator2"
-        android:layout_marginLeft="@dimen/eight_dp_margin"
-        android:layout_marginRight="@dimen/eight_dp_margin">
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="14dp">
 
         <TextView
             android:id="@+id/quiet_settings_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/quiet_environment_label"
             android:textAllCaps="true" />
 
-        <ImageView
-            android:id="@+id/loudspeaker1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/quiet_settings_label"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_loudspeaker" />
-
-        <TextView
-            android:id="@+id/volume_label1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/quiet_volume_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/quiet_settings_label"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@id/loudspeaker1"
-            android:text="@string/volume_label" />
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
 
-        <View
-            android:id="@+id/horizontal_separator3"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_below="@id/quiet_settings_label"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp" />
+            <ImageView
+                android:id="@+id/loudspeaker1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_loudspeaker" />
 
-        <SeekBar
-            android:id="@+id/quiet_volume_seekBar"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/volume_label1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/volume_label"
+                android:textSize="14sp" />
+
+            <SeekBar
+                android:id="@+id/quiet_volume_seekBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/quiet_mic_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/quiet_settings_label"
-            android:layout_marginTop="8dp"
-            android:layout_toRightOf="@id/horizontal_separator3" />
+            android:layout_below="@id/quiet_volume_group"
+            android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/mic1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/volume_label1"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/ic_mic" />
+            <ImageView
+                android:id="@+id/mic1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_mic" />
 
-        <TextView
-            android:id="@+id/mic_label1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/volume_label1"
-            android:layout_marginTop="24dp"
-            android:layout_toRightOf="@id/mic1"
-            android:text="@string/mic_label" />
+            <TextView
+                android:id="@+id/mic_label1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/mic_label" />
 
-        <View
-            android:id="@+id/horizontal_separator4"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_below="@id/quiet_settings_label"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp" />
+            <SeekBar
+                android:id="@+id/quiet_mic_seekBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:max="32767" />
 
-        <SeekBar
-            android:id="@+id/quiet_mic_seekBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/volume_label1"
-            android:layout_marginTop="12dp"
-            android:layout_toRightOf="@id/horizontal_separator4"
-            android:max="32767" />
+        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -218,88 +208,81 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/quiet_settings_box"
-        android:layout_marginLeft="@dimen/eight_dp_margin"
-        android:layout_marginRight="@dimen/eight_dp_margin"
-        android:layout_marginTop="@dimen/separator_margin">
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="14dp">
 
         <TextView
             android:id="@+id/noisy_settings_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/noisy_environment_label"
+            android:text="@string/quiet_environment_label"
             android:textAllCaps="true" />
 
-        <ImageView
-            android:id="@+id/loudspeaker2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/noisy_settings_label"
-            android:layout_marginTop="@dimen/eight_dp_margin"
-            android:src="@drawable/ic_loudspeaker" />
-
-        <TextView
-            android:id="@+id/volume_label2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/noisy_volume_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/noisy_settings_label"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@id/loudspeaker2"
-            android:text="@string/volume_label" />
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
 
-        <View
-            android:id="@+id/horizontal_separator5"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_below="@id/noisy_settings_label"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/eight_dp_margin" />
+            <ImageView
+                android:id="@+id/loudspeaker2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_loudspeaker" />
 
-        <SeekBar
-            android:id="@+id/noisy_volume_seekBar"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/volume_label2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/volume_label"
+                android:textSize="14sp" />
+
+            <SeekBar
+                android:id="@+id/noisy_volume_seekBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/noisy_mic_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/noisy_settings_label"
-            android:layout_marginTop="@dimen/eight_dp_margin"
-            android:layout_toRightOf="@id/horizontal_separator5" />
+            android:layout_below="@id/noisy_volume_group"
+            android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/mic2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/volume_label2"
-            android:layout_marginTop="12dp"
-            android:src="@drawable/ic_mic" />
+            <ImageView
+                android:id="@+id/mic2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:src="@drawable/ic_mic"
+                />
 
-        <TextView
-            android:id="@+id/mic_label2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/volume_label2"
-            android:layout_marginTop="24dp"
-            android:layout_toRightOf="@id/mic2"
-            android:text="@string/mic_label" />
+            <TextView
+                android:id="@+id/mic_label2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="@string/mic_label" />
 
-        <View
-            android:id="@+id/horizontal_separator6"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_below="@id/noisy_settings_label"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/eight_dp_margin" />
+            <SeekBar
+                android:id="@+id/noisy_mic_seekBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:max="32767" />
 
-        <SeekBar
-            android:id="@+id/noisy_mic_seekBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/volume_label2"
-            android:layout_marginTop="12dp"
-            android:layout_toRightOf="@id/horizontal_separator6"
-            android:max="32767" />
+        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout>

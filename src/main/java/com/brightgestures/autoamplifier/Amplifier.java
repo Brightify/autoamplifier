@@ -204,4 +204,20 @@ public class Amplifier {
         mediaRecorder.stop();
     }
 
+    public void increment() {
+        volumeLow++;
+        volumeHigh++;
+        UIChangePerformed();
+    }
+
+    public void decrement() {
+        if (volumeLow > 0) {
+            volumeLow--;
+        }
+        if (volumeHigh > 0) {
+            volumeHigh--;
+        }
+        UIChangePerformed();
+    }
+
 }

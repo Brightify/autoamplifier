@@ -54,4 +54,5 @@ android {
 dependencies {
     apt 'org.androidannotations:androidannotations:3.0.1'
     compile 'org.androidannotations:androidannotations-api:3.0.1'
+    compile 'com.android.support:support-v4:19.0.+'
 }

@@ -64,7 +64,11 @@ public class MainFragment extends Fragment {
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            currentMic.setProgress(intent.getIntExtra(DataSender.MIC, 0));
+            if (intent.getAction() != null && intent.getAction().equals(AmplifierService.ACTION_DISABLE)) {
+                enable.setChecked(false);
+            } else {
+                currentMic.setProgress(intent.getIntExtra(DataSender.MIC, 0));
+            }
         }
     };
 
@@ -151,8 +155,9 @@ public class MainFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (getActivity() != null && getActivity().getApplicationContext() != null) {
-            getActivity().getApplicationContext().registerReceiver(broadcastReceiver,
-                    new IntentFilter(DataSender.INTENT_TO_ACTIVITY));
+            IntentFilter intentFilter = new IntentFilter(AmplifierService.ACTION_DISABLE);
+            intentFilter.addAction(DataSender.INTENT_TO_ACTIVITY);
+            getActivity().getApplicationContext().registerReceiver(broadcastReceiver, intentFilter);
         }
         Thread volumeThread = new Thread(new Runnable() {
             @Override
@@ -174,6 +179,9 @@ public class MainFragment extends Fragment {
     public void onStop() {
         super.onStop();
         volumeThreadRunning = false;
+        if (getActivity() != null && getActivity().getApplicationContext() != null) {
+            getActivity().getApplicationContext().unregisterReceiver(broadcastReceiver);
+        }
     }
 
     private boolean isServiceRunning() {
