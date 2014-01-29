@@ -108,7 +108,7 @@ public class AmplifierService extends Service {
         amplifyingThread.start();
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
-        builder.setSmallIcon(R.drawable.ic_stat_loudspeaker);
+        builder.setSmallIcon(R.drawable.ic_notification);
         builder.setContentTitle(getString(R.string.app_name));
         builder.setContentText(getString(R.string.notification_title));
         builder.setOngoing(true);
