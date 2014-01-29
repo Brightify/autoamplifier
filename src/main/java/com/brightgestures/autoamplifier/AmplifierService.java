@@ -115,12 +115,13 @@ public class AmplifierService extends Service {
         builder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this,
                 MainActivity_.class)
                 .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0));
-        builder.addAction(R.drawable.ic_stat_disable, getString(R.string.notification_disable),
+        builder.addAction(R.drawable.ic_stat_disable, "",
                 PendingIntent.getBroadcast(this, 0, new Intent(ACTION_DISABLE), 0));
-        builder.addAction(R.drawable.ic_stat_increase, getString(R.string.notification_increase),
+        builder.addAction(R.drawable.ic_stat_increase, "",
                 PendingIntent.getBroadcast(this, 0, new Intent(ACTION_INCREASE), 0));
-        builder.addAction(R.drawable.ic_stat_decrease, getString(R.string.notification_decrease),
+        builder.addAction(R.drawable.ic_stat_decrease, "",
                 PendingIntent.getBroadcast(this, 0, new Intent(ACTION_DECREASE), 0));
+        builder.setPriority(50);
 
         startForeground(NOTIFICATION_ID, builder.build());
         return START_NOT_STICKY;
