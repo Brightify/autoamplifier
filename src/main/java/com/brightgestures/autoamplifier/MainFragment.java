@@ -131,6 +131,7 @@ public class MainFragment extends Fragment {
     void quietVolumeChange(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
             dataSender.sendLowVolume(progress);
+            dataSender.sendHighVolume(noisyVolume.getProgress());
             saveValues();
         }
     }
@@ -147,6 +148,7 @@ public class MainFragment extends Fragment {
     void noisyVolumeChange(SeekBar seekBar, int progress, boolean fromUser) {
         if (fromUser) {
             dataSender.sendHighVolume(progress);
+            dataSender.sendLowVolume(quietVolume.getProgress());
             saveValues();
         }
     }
@@ -187,7 +189,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(!isServiceRunning()){
+        if (!isServiceRunning()) {
             enable.setChecked(false);
         }
     }
