@@ -216,7 +216,7 @@
             android:id="@+id/noisy_settings_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/quiet_environment_label"
+            android:text="@string/noisy_environment_label"
             android:textAllCaps="true" />
 
         <LinearLayout
