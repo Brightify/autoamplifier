@@ -2,7 +2,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference
-        android:key="save_values"
+        android:key="saveValues"
         android:defaultValue="true"
         android:title="@string/prefs_save"
         android:summary="@string/prefs_save_description"

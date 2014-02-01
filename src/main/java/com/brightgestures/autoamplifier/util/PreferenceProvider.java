@@ -21,6 +21,8 @@ public class PreferenceProvider {
     public final static String VOLUME_HIGH = "volumeHigh";
     public final static String MIC_LOW = "micLow";
     public final static String MIC_HIGH = "micHigh";
+    public final static String SAVE_VALUES = "saveValues";
+    private final boolean SAVE_DEFAULT = true;
     public final static int NO_CHANGE = -1;
     private final static int NO_DATA = -1;
 
@@ -45,7 +47,7 @@ public class PreferenceProvider {
     }
 
     private void saveInteger(int value, String key) {
-        if (value != -1) {
+        if (value != -1 && getSaveValues()) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(key, value);
             editor.commit();
@@ -92,5 +94,15 @@ public class PreferenceProvider {
     public void resetPreferences() {
         saveValues(Amplifier.VOLUME_DEFAULT_MIN, Amplifier.VOLUME_DEFAULT_MAX,
                 Amplifier.MIC_DEFAULT_MIN, Amplifier.MIC_DEFAULT_MAX);
+    }
+
+    public void setSaveValues(boolean save) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(SAVE_VALUES, save);
+        editor.commit();
+    }
+
+    public boolean getSaveValues() {
+        return sharedPreferences.getBoolean(SAVE_VALUES, SAVE_DEFAULT);
     }
 }
