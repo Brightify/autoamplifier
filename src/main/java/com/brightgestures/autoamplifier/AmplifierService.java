@@ -77,20 +77,13 @@ public class AmplifierService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (getApplicationContext() != null) {
-            try {
-                amplifier.init();
-                amplifier.initialiseMicArray();
-            } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), "Couldn't start service", Toast.LENGTH_LONG)
-                        .show();
-            }
-        }
+        //initialiseAmplifier();
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        initialiseAmplifier();
         registerReceiver(activityReceiver, new IntentFilter("toService"));
         IntentFilter filter = new IntentFilter(ACTION_DISABLE);
         filter.addAction(ACTION_DECREASE);
@@ -135,6 +128,18 @@ public class AmplifierService extends Service {
         amplifyingThreadRunning = false;
         if (amplifier != null) {
             amplifier.onStop();
+        }
+    }
+
+    private void initialiseAmplifier(){
+        if (getApplicationContext() != null) {
+            try {
+                amplifier.init();
+                amplifier.initialiseMicArray();
+            } catch (IOException e) {
+                Toast.makeText(getApplicationContext(), "Couldn't start service", Toast.LENGTH_LONG)
+                        .show();
+            }
         }
     }
 }

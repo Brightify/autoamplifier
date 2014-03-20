@@ -53,6 +53,7 @@ public class Amplifier {
     private int delayInterval = DEFAULT_DELAY_INTERVAL; //100 ms
     private int[] micArray = new int[MIC_ARRAY_LENGTH];
     private boolean UIChangePerformed = false;
+    private boolean mediaRecorderInitialised = false;
 
     public Amplifier() {
 
@@ -66,7 +67,10 @@ public class Amplifier {
         micHigh = preferenceProvider.getMicHigh();
         volumeLow = preferenceProvider.getVolumeLow();
         volumeHigh = preferenceProvider.getVolumeHigh();
-        initialiseMediaRecorder();
+        if (!mediaRecorderInitialised) {
+            initialiseMediaRecorder();
+            mediaRecorderInitialised = true;
+        }
         initialiseMicArray();
     }
 
@@ -166,7 +170,7 @@ public class Amplifier {
         }
     }
 
-    private void setVolume(int volume) {
+    public void setVolume(int volume) {
         if (volume < volumeLow) {
             volume = volumeLow;
         } else if (volume > volumeHigh) {
@@ -202,6 +206,7 @@ public class Amplifier {
 
     public void onStop() {
         mediaRecorder.stop();
+        mediaRecorderInitialised = false;
     }
 
     public void increment() {

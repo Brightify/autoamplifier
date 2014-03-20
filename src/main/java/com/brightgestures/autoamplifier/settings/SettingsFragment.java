@@ -3,7 +3,6 @@ package com.brightgestures.autoamplifier.settings;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
@@ -15,6 +14,7 @@ import org.androidannotations.annotations.EFragment;
 
 /**
  * Created by matous on 26.1.14.
+ * Fragment that represents preference screen
  */
 
 @EFragment
@@ -41,6 +41,5 @@ public class SettingsFragment extends PreferenceFragment {
                 }
             });
         }
-        CheckBoxPreference saveValues = (CheckBoxPreference) findPreference(PreferenceProvider.SAVE_VALUES);
     }
 }
