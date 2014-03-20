@@ -4,19 +4,20 @@
     android:layout_height="match_parent"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
-    tools:context="com.brightgestures.autoamplifier.MainFragment_"
-    android:scrollbarStyle="outsideOverlay">
+    android:scrollbarStyle="outsideOverlay"
+    tools:context="com.brightgestures.autoamplifier.MainFragment_">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/auto_volume_control_label"
             style="?android:attr/listSeparatorTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:paddingLeft="@dimen/separator_margin"
             android:text="@string/auto_volume_control_label" />
 
@@ -24,16 +25,15 @@
             android:id="@+id/separator1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@id/auto_volume_control_label"
             android:background="@color/autoamplifiertheme_color" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/automatic_volume_control_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/separator1"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/enable_group"
@@ -64,7 +64,6 @@
                 android:id="@+id/current_volume_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/enable_group"
                 android:layout_marginTop="16dp"
                 android:gravity="center_vertical">
 
@@ -89,7 +88,6 @@
                 android:id="@+id/current_mic_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/current_volume_group"
                 android:layout_marginTop="16dp">
 
                 <TextView
@@ -108,15 +106,14 @@
                     android:layout_weight="1"
                     android:max="32767" />
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/settings_label"
             style="?android:attr/listSeparatorTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/automatic_volume_control_box"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:paddingLeft="@dimen/eight_dp_margin"
             android:text="@string/settings_label" />
 
@@ -124,17 +121,16 @@
             android:id="@+id/separator2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@id/settings_label"
             android:background="@color/autoamplifiertheme_color" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/quiet_settings_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/separator2"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="14dp">
+            android:layout_marginTop="14dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/quiet_settings_label"
@@ -147,7 +143,6 @@
                 android:id="@+id/quiet_volume_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/quiet_settings_label"
                 android:layout_marginTop="16dp"
                 android:gravity="center_vertical">
 
@@ -179,7 +174,6 @@
                 android:id="@+id/quiet_mic_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/quiet_volume_group"
                 android:gravity="center_vertical">
 
                 <ImageView
@@ -206,17 +200,17 @@
                     android:max="32767" />
 
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/noisy_settings_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/quiet_settings_box"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="14dp"
-            android:layout_marginBottom="@dimen/activity_vertical_margin">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/noisy_settings_label"
@@ -229,7 +223,6 @@
                 android:id="@+id/noisy_volume_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/noisy_settings_label"
                 android:layout_marginTop="16dp"
                 android:gravity="center_vertical">
 
@@ -261,7 +254,6 @@
                 android:id="@+id/noisy_mic_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/noisy_volume_group"
                 android:gravity="center_vertical">
 
                 <ImageView
@@ -288,6 +280,6 @@
                     android:max="32767" />
 
             </LinearLayout>
-        </RelativeLayout>
-    </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 </ScrollView>
