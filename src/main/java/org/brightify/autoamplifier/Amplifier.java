@@ -235,13 +235,13 @@ public class Amplifier {
         String mode = intent.getStringExtra(DataSender.VALUE);
         if (mode != null) {
             if (mode.equals(DataSender.MIC_LOW)) {
-                this.setMicLow(intent.getIntExtra(DataSender.MIC_LOW, 1));
+                this.setMicLow(intent.getIntExtra(DataSender.MIC_LOW, MIC_DEFAULT_MIN));
             } else if (mode.equals(DataSender.MIC_HIGH)) {
-                this.setMicHigh(intent.getIntExtra(DataSender.MIC_HIGH, 1));
+                this.setMicHigh(intent.getIntExtra(DataSender.MIC_HIGH, MIC_DEFAULT_MAX));
             } else if (mode.equals(DataSender.VOLUME_LOW)) {
-                this.setVolumeLow(intent.getIntExtra(DataSender.VOLUME_LOW, 1));
+                this.setVolumeLow(intent.getIntExtra(DataSender.VOLUME_LOW, VOLUME_DEFAULT_MIN));
             } else if (mode.equals(DataSender.VOLUME_HIGH)) {
-                this.setVolumeHigh(intent.getIntExtra(DataSender.VOLUME_HIGH, 1));
+                this.setVolumeHigh(intent.getIntExtra(DataSender.VOLUME_HIGH, VOLUME_DEFAULT_MAX));
             } else if (mode.equals(DataSender.RESET)) {
                 if (intent.getBooleanExtra(DataSender.RESET, false)) {
                     this.resetValues();
