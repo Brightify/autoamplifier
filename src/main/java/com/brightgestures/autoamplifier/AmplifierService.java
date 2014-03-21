@@ -8,29 +8,17 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EService;
 
-import java.io.IOException;
-
 @EService
 public class AmplifierService extends Service {
 
-    private static final int NOTIFICATION_ID = 55;
     public static final String ACTION_DISABLE = "com.brightgestures.autoamplifier.disable";
+    private static final int NOTIFICATION_ID = 55;
     private static final String ACTION_INCREASE = "com.brightgestures.autoamplifier.increase";
     private static final String ACTION_DECREASE = "com.brightgestures.autoamplifier.decrease";
-
-    private BroadcastReceiver activityReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            amplifier.setIntent(intent);
-        }
-
-    };
-
     private BroadcastReceiver notificationReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -45,10 +33,15 @@ public class AmplifierService extends Service {
             }
         }
     };
-
     @Bean
     Amplifier amplifier;
+    private BroadcastReceiver activityReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            amplifier.setIntent(intent);
+        }
 
+    };
     private boolean amplifyingThreadRunning = true;
 
     @Override
@@ -113,14 +106,6 @@ public class AmplifierService extends Service {
     }
 
     private void initialiseAmplifier() {
-        if (getApplicationContext() != null) {
-            try {
-                amplifier.init();
-                amplifier.initialiseMicArray();
-            } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), "Couldn't start service", Toast.LENGTH_LONG)
-                        .show();
-            }
-        }
+        amplifier.initialiseMicArray();
     }
 }

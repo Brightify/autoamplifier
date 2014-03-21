@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 import com.brightgestures.autoamplifier.Amplifier;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
@@ -35,7 +36,8 @@ public class PreferenceProvider {
 
     }
 
-    public void init() {
+    @AfterInject
+    void init() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 

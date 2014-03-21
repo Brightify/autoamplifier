@@ -8,6 +8,7 @@ import android.media.MediaRecorder;
 import com.brightgestures.autoamplifier.util.DataSender;
 import com.brightgestures.autoamplifier.util.PreferenceProvider;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
@@ -60,8 +61,8 @@ public class Amplifier {
 
     }
 
-    public void init() throws IOException {
-        preferenceProvider.init();
+    @AfterInject
+    void init() {
         currentVolume = audioManager.getStreamVolume(MUSIC_STREAM);
         lastVolume = audioManager.getStreamVolume(MUSIC_STREAM);
         micLow = preferenceProvider.getMicLow();
@@ -99,13 +100,17 @@ public class Amplifier {
         return volume;
     }
 
-    private void initialiseMediaRecorder() throws IOException {
+    private void initialiseMediaRecorder() {
         mediaRecorder = new MediaRecorder();
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         mediaRecorder.setOutputFile("/dev/null");
-        mediaRecorder.prepare();
+        try {
+            mediaRecorder.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         mediaRecorder.start();
     }
 

@@ -81,7 +81,6 @@ public class MainActivity extends Activity {
 
     @AfterViews
     void initialise() {
-        preferenceProvider.init();
         currentVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         quietVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         quietVolume.setProgress(preferenceProvider.getVolumeLow());
@@ -170,7 +169,7 @@ public class MainActivity extends Activity {
         } else {
             throw new RuntimeException("Unable to register activity receiver");
         }
-
+        volumeThreadRunning = true;
         Thread volumeThread = new Thread(new Runnable() {
             @Override
             public void run() {
