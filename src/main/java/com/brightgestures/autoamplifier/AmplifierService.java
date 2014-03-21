@@ -78,17 +78,16 @@ public class AmplifierService extends Service {
     public void onCreate() {
         super.onCreate();
         //initialiseAmplifier();
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        initialiseAmplifier();
         registerReceiver(activityReceiver, new IntentFilter("toService"));
         IntentFilter filter = new IntentFilter(ACTION_DISABLE);
         filter.addAction(ACTION_DECREASE);
         filter.addAction(ACTION_INCREASE);
         registerReceiver(notificationReceiver, filter);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        initialiseAmplifier();
         amplifyingThreadRunning = true;
         Thread amplifyingThread = new Thread(new Runnable() {
             @Override
