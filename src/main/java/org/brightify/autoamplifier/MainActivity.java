@@ -1,4 +1,4 @@
-package com.brightgestures.autoamplifier;
+package org.brightify.autoamplifier;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -12,9 +12,10 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
-import com.brightgestures.autoamplifier.settings.SettingsActivity;
-import com.brightgestures.autoamplifier.util.DataSender;
-import com.brightgestures.autoamplifier.util.PreferenceProvider;
+
+import org.brightify.autoamplifier.settings.SettingsActivity;
+import org.brightify.autoamplifier.util.DataSender;
+import org.brightify.autoamplifier.util.PreferenceProvider;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;

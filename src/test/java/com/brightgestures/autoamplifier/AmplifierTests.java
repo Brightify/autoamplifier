@@ -1,8 +1,9 @@
-package com.brightgestures.autoamplifier;
+package com.brightify.autoamplifier;
 
 import android.content.Context;
 import android.media.AudioManager;
 
+import org.brightify.autoamplifier.Amplifier_;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

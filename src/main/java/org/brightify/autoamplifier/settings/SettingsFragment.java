@@ -1,4 +1,4 @@
-package com.brightgestures.autoamplifier.settings;
+package org.brightify.autoamplifier.settings;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
-import com.brightgestures.autoamplifier.R;
-import com.brightgestures.autoamplifier.util.PreferenceProvider;
+import org.brightify.autoamplifier.R;
+import org.brightify.autoamplifier.util.PreferenceProvider;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;

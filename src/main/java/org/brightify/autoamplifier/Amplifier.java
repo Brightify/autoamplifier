@@ -1,12 +1,12 @@
-package com.brightgestures.autoamplifier;
+package org.brightify.autoamplifier;
 
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaRecorder;
 
-import com.brightgestures.autoamplifier.util.DataSender;
-import com.brightgestures.autoamplifier.util.PreferenceProvider;
+import org.brightify.autoamplifier.util.DataSender;
+import org.brightify.autoamplifier.util.PreferenceProvider;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;

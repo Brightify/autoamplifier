@@ -1,4 +1,4 @@
-package com.brightgestures.autoamplifier;
+package com.brightify.autoamplifier;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

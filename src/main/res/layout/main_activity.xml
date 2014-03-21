@@ -5,7 +5,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:scrollbarStyle="outsideOverlay"
-    tools:context="com.brightgestures.autoamplifier.MainFragment_">
+    tools:context="org.brightify.autoamplifier.MainFragment_">
 
     <LinearLayout
         android:layout_width="match_parent"

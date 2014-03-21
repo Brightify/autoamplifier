@@ -1,4 +1,4 @@
-package com.brightgestures.autoamplifier.settings;
+package org.brightify.autoamplifier.settings;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

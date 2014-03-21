@@ -30,7 +30,7 @@ repositories {
 apt {
     arguments {
         androidManifestFile variant.processResources.manifestFile
-        resourcePackageName 'com.brightgestures.autoamplifier'
+        resourcePackageName 'org.brightify.autoamplifier'
     }
 }
 
@@ -57,6 +57,7 @@ android {
 
     buildTypes {
         release {
+            debuggable false
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }

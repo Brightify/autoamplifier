@@ -1,10 +1,10 @@
-package com.brightgestures.autoamplifier.util;
+package org.brightify.autoamplifier.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.brightgestures.autoamplifier.Amplifier;
+import org.brightify.autoamplifier.Amplifier;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;

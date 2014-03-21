@@ -1,4 +1,4 @@
-package com.brightgestures.autoamplifier.util;
+package org.brightify.autoamplifier.util;
 
 import android.content.Context;
 import android.content.Intent;
