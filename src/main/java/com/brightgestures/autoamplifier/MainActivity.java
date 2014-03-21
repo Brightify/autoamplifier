@@ -167,7 +167,10 @@ public class MainActivity extends Activity {
             IntentFilter intentFilter = new IntentFilter(AmplifierService.ACTION_DISABLE);
             intentFilter.addAction(DataSender.INTENT_TO_ACTIVITY);
             getApplicationContext().registerReceiver(broadcastReceiver, intentFilter);
+        } else {
+            throw new RuntimeException("Unable to register activity receiver");
         }
+
         Thread volumeThread = new Thread(new Runnable() {
             @Override
             public void run() {

@@ -1,6 +1,7 @@
 package com.brightgestures.autoamplifier;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaRecorder;
 
@@ -223,6 +224,26 @@ public class Amplifier {
             volumeHigh--;
         }
         UIChangePerformed();
+    }
+
+    public void setIntent(Intent intent) {
+        String mode = intent.getStringExtra(DataSender.VALUE);
+        if (mode != null) {
+            if (mode.equals(DataSender.MIC_LOW)) {
+                this.setMicLow(intent.getIntExtra(DataSender.MIC_LOW, 1));
+            } else if (mode.equals(DataSender.MIC_HIGH)) {
+                this.setMicHigh(intent.getIntExtra(DataSender.MIC_HIGH, 1));
+            } else if (mode.equals(DataSender.VOLUME_LOW)) {
+                this.setVolumeLow(intent.getIntExtra(DataSender.VOLUME_LOW, 1));
+            } else if (mode.equals(DataSender.VOLUME_HIGH)) {
+                this.setVolumeHigh(intent.getIntExtra(DataSender.VOLUME_HIGH, 1));
+            } else if (mode.equals(DataSender.RESET)) {
+                if (intent.getBooleanExtra(DataSender.RESET, false)) {
+                    this.resetValues();
+                }
+            }
+            this.UIChangePerformed();
+        }
     }
 
 }

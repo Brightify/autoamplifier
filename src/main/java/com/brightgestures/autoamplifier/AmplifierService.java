@@ -10,8 +10,6 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
-import com.brightgestures.autoamplifier.util.DataSender;
-
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EService;
 
@@ -28,23 +26,7 @@ public class AmplifierService extends Service {
     private BroadcastReceiver activityReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String mode = intent.getStringExtra(DataSender.VALUE);
-            if (mode != null) {
-                if (mode.equals(DataSender.MIC_LOW)) {
-                    amplifier.setMicLow(intent.getIntExtra(DataSender.MIC_LOW, 1));
-                } else if (mode.equals(DataSender.MIC_HIGH)) {
-                    amplifier.setMicHigh(intent.getIntExtra(DataSender.MIC_HIGH, 1));
-                } else if (mode.equals(DataSender.VOLUME_LOW)) {
-                    amplifier.setVolumeLow(intent.getIntExtra(DataSender.VOLUME_LOW, 1));
-                } else if (mode.equals(DataSender.VOLUME_HIGH)) {
-                    amplifier.setVolumeHigh(intent.getIntExtra(DataSender.VOLUME_HIGH, 1));
-                } else if (mode.equals(DataSender.RESET)) {
-                    if (intent.getBooleanExtra(DataSender.RESET, false)) {
-                        amplifier.resetValues();
-                    }
-                }
-                amplifier.UIChangePerformed();
-            }
+            amplifier.setIntent(intent);
         }
 
     };
@@ -130,7 +112,7 @@ public class AmplifierService extends Service {
         }
     }
 
-    private void initialiseAmplifier(){
+    private void initialiseAmplifier() {
         if (getApplicationContext() != null) {
             try {
                 amplifier.init();
