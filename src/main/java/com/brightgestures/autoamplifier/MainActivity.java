@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
     };
 
     @AfterViews
-    void initialise() {
+    void initialiseViews() {
         currentVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         quietVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         quietVolume.setProgress(preferenceProvider.getVolumeLow());
@@ -159,9 +159,8 @@ public class MainActivity extends Activity {
         }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+    @AfterViews
+    void init() {
         if (getApplicationContext() != null) {
             IntentFilter intentFilter = new IntentFilter(AmplifierService.ACTION_DISABLE);
             intentFilter.addAction(DataSender.INTENT_TO_ACTIVITY);
