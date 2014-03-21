@@ -55,13 +55,26 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            if (System.console() != null) {
+                storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
+                storePassword System.console().readLine("\n\$ Enter keystore password: ")
+                keyAlias "brightify"
+                keyPassword System.console().readLine("\n\$ Enter key password: ")
+            }
+        }
+    }
+
     buildTypes {
         release {
             debuggable false
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
         }
     }
+
 }
 
 dependencies {

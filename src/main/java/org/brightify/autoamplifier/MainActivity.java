@@ -162,6 +162,12 @@ public class MainActivity extends Activity {
 
     @AfterViews
     void init() {
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         if (getApplicationContext() != null) {
             IntentFilter intentFilter = new IntentFilter(AmplifierService.ACTION_DISABLE);
             intentFilter.addAction(DataSender.INTENT_TO_ACTIVITY);
