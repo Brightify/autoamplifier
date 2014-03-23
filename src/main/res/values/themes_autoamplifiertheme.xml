@@ -5,7 +5,7 @@
 
     <style name="AutoAmplifierTheme" parent="@style/_AutoAmplifierTheme" />
 
-    <style name="_AutoAmplifierTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <style name="_AutoAmplifierTheme" parent="android:Theme.Holo.Light">
 
         <item name="android:progressBarStyleHorizontal">@style/ProgressBarAutoAmplifierTheme</item>
 
@@ -13,6 +13,7 @@
 
         <item name="android:actionBarStyle">@style/ActionBarTheme</item>
         <item name="android:listSeparatorTextViewStyle">@style/HeadingTheme</item>
+        <item name="android:actionOverflowButtonStyle">@android:style/Widget.Holo.ActionButton.Overflow</item>
 
     </style>
 
