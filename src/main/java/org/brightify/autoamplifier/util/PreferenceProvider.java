@@ -49,7 +49,7 @@ public class PreferenceProvider {
     }
 
     private void saveInteger(int value, String key) {
-        if (value != -1 && getSaveValues()) {
+        if (value != -1 && isSavingEnabled()) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(key, value);
             editor.commit();
@@ -104,7 +104,7 @@ public class PreferenceProvider {
         editor.commit();
     }
 
-    public boolean getSaveValues() {
+    public boolean isSavingEnabled() {
         return sharedPreferences.getBoolean(SAVE_VALUES, SAVE_DEFAULT);
     }
 }
