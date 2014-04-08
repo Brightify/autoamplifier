@@ -77,7 +77,7 @@ public class MainActivity extends Activity {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() != null && intent.getAction().equals(AmplifierService.ACTION_DISABLE)) {
                 enable.setChecked(false);
-                currentMicGroup.setVisibility(View.GONE);
+                currentMicGroup.setVisibility(View.INVISIBLE);
             } else {
                 currentMic.setProgress(intent.getIntExtra(DataSender.MIC, 0));
             }
