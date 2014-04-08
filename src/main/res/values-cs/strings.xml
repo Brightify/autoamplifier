@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoAmplifier</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="prefs_save">Ukládat nastavení</string>
+    <string name="prefs_save_description">Uloží nastavení a načte je při startu</string>
+    <string name="author">Autor</string>
+    <string name="notification_title">Pro změnu nastavení klepněte</string>
+    <string name="main_fragment_tag">mainFragment</string>
+    <string name="auto_volume_control_label">Automatické ovládání hlasitosti</string>
+    <string name="current_mic_label">Momentální mikrofon</string>
+    <string name="current_volume_label">Momentální hlasitost</string>
+    <string name="settings_label">Nastavení</string>
+    <string name="quiet_environment_label">Tiché prostředí</string>
+    <string name="volume_label">Hlasitost</string>
+    <string name="mic_label">Mikrofon</string>
+    <string name="noisy_environment_label">Hlučné prostředí</string>
+    <string name="service_label">AmplifierService</string>
+    <string name="reset">Vynulovat nastavení</string>
+    <string name="notification_disable">Vypnout</string>
+    <string name="notification_increase">Zesílit</string>
+    <string name="notification_decrease">Ztlumit</string>
+</resources>
