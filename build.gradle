@@ -60,7 +60,7 @@ android {
             if (System.console() != null) {
                 storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
                 storePassword System.console().readLine("\n\$ Enter keystore password: ")
-                keyAlias System.console().readLine("\n\$ Enter key alias")
+                keyAlias System.console().readLine("\n\$ Enter key alias: ")
                 keyPassword System.console().readLine("\n\$ Enter key password: ")
             }
         }
@@ -81,19 +81,8 @@ dependencies {
     repositories {
         mavenCentral()
     }
-    //unit tests
-    unitTestCompile files("$project.buildDir/classes/release")
-    unitTestCompile 'junit:junit:4.10'
-    unitTestCompile 'org.robolectric:robolectric:2.1.+'
-    unitTestCompile 'com.google.android:android:4.0.1.2'
     //other
     apt 'org.androidannotations:androidannotations:3.0.1'
     compile 'org.androidannotations:androidannotations-api:3.0.1'
     compile 'com.android.support:support-v4:19.0.+'
 }
-
-task unitTest(type: Test, dependsOn: assemble) {
-    testClassesDir = project.sourceSets.unitTest.output.classesDir
-    classpath = project.sourceSets.unitTest.runtimeClasspath
-}
-check.dependsOn unitTest
