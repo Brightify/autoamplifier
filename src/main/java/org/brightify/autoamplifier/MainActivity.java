@@ -1,3 +1,20 @@
+/*
+    AutoAmplifier - Android application that changes media volume according to noise in the surroundings.
+    Copyright (C) 2014  Brightify s.r.o.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package org.brightify.autoamplifier;
 
 import android.app.Activity;
@@ -7,15 +24,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Switch;
-
-
-import org.brightify.autoamplifier.settings.SettingsActivity;
-import org.brightify.autoamplifier.util.DataSender;
-import org.brightify.autoamplifier.util.PreferenceProvider;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -27,6 +41,9 @@ import org.androidannotations.annotations.SeekBarProgressChange;
 import org.androidannotations.annotations.SystemService;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.brightify.autoamplifier.settings.SettingsActivity;
+import org.brightify.autoamplifier.util.DataSender;
+import org.brightify.autoamplifier.util.PreferenceProvider;
 
 @OptionsMenu(R.menu.main)
 @EActivity(R.layout.main_activity)
@@ -55,6 +72,9 @@ public class MainActivity extends Activity {
     @ViewById(R.id.noisy_volume_seekBar)
     SeekBar noisyVolume;
 
+    @ViewById
+    LinearLayout currentMicGroup;
+
     @SystemService
     AudioManager audioManager;
 
@@ -74,6 +94,7 @@ public class MainActivity extends Activity {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() != null && intent.getAction().equals(AmplifierService.ACTION_DISABLE)) {
                 enable.setChecked(false);
+                currentMicGroup.setVisibility(View.INVISIBLE);
             } else {
                 currentMic.setProgress(intent.getIntExtra(DataSender.MIC, 0));
             }
@@ -120,8 +141,13 @@ public class MainActivity extends Activity {
             if (!isServiceRunning()) {
                 AmplifierService_.intent(this).start();
             }
+            if(!preferenceProvider.isSavingEnabled()){
+                reset();
+            }
+            currentMicGroup.setVisibility(View.VISIBLE);
         } else {
             AmplifierService_.intent(this).stop();
+            currentMicGroup.setVisibility(View.INVISIBLE);
         }
 
     }
@@ -158,11 +184,6 @@ public class MainActivity extends Activity {
             dataSender.sendLowVolume(quietVolume.getProgress());
             saveValues();
         }
-    }
-
-    @AfterViews
-    void init() {
-
     }
 
     @Override
@@ -206,6 +227,7 @@ public class MainActivity extends Activity {
         super.onResume();
         if (!isServiceRunning()) {
             enable.setChecked(false);
+            currentMicGroup.setVisibility(View.INVISIBLE);
         }
     }
 
