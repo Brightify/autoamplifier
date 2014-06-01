@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+AutoAmplifier - Android application that changes media volume according to noise in the surroundings.
+Copyright (C) 2014  Brightify s.r.o.
+Translated by Arthur Zamarin<arthurzam@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+  <string name="hello_world">שלום עולם!</string>
+  <string name="prefs_save">שמור הגדרות</string>
+  <string name="prefs_save_description">שמור הגדרות ושחזר בהפעלה</string>
+  <string name="author">יוצר</string>
+  <string name="notification_title">גע כדי לכוון הגדרות</string>
+  <string name="auto_volume_control_label">בקרת עוצמת קול אוטומטית</string>
+  <string name="current_mic_label">מיקרופון נוכחי</string>
+  <string name="current_volume_label">עוצמה נוכחית</string>
+  <string name="settings_label">הגדרות</string>
+  <string name="quiet_environment_label">סביבה שקטה</string>
+  <string name="volume_label">עוצמה</string>
+  <string name="mic_label">מיקרופון</string>
+  <string name="noisy_environment_label">סביבה רועשת</string>
+  <string name="service_label">שירות Amplifier</string>
+  <string name="reset">שחזר לברירת מחדל</string>
+  <string name="notification_disable">השבת</string>
+  <string name="notification_increase">הגדל</string>
+  <string name="notification_decrease">הקטן</string>
+</resources>
