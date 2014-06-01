@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 AutoAmplifier - Android application that changes media volume according to noise in the surroundings.
 Copyright (C) 2014  Brightify s.r.o.
 
@@ -18,13 +17,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
 
-    <string name="app_name">AutoAmplifier</string>
+    <string name="app_name" translatable="false">AutoAmplifier</string>
     <string name="hello_world">Hello world!</string>
     <string name="prefs_save">Save settings</string>
     <string name="prefs_save_description">Save settings and restore on start</string>
     <string name="author">Author</string>
     <string name="notification_title">Touch to adjust settings</string>
-    <string name="main_fragment_tag">mainFragment</string>
+    <string name="main_fragment_tag" translatable="false">mainFragment</string>
     <string name="auto_volume_control_label">Automatic volume control</string>
     <string name="current_mic_label">Current microphone</string>
     <string name="current_volume_label">Current volume</string>
