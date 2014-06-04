@@ -16,7 +16,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-    <string name="hello_world">Hello world!</string>
     <string name="prefs_save">Ukládat nastavení</string>
     <string name="prefs_save_description">Uloží nastavení a načte je při startu</string>
     <string name="author">Autor</string>

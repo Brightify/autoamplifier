@@ -18,7 +18,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-  <string name="hello_world">שלום עולם!</string>
   <string name="prefs_save">שמור הגדרות</string>
   <string name="prefs_save_description">שמור הגדרות ושחזר בהפעלה</string>
   <string name="author">יוצר</string>
